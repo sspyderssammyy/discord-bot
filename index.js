@@ -12,7 +12,11 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 // ─── Keep Render happy ────────────────────────────────────────────────────────
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['https://sspyderssammyy.github.io', 'http://localhost:3000', 'http://127.0.0.1:5500'],
+  methods: ['GET', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'x-secret'],
+}));
 app.use(express.json());
 http.createServer(app).listen(process.env.PORT || 3000, () => console.log('✅ Web server running'));
 
